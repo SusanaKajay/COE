@@ -7,9 +7,10 @@ import {
     Dimensions,
     StyleSheet,
     Image,
+    ScrollView,
 } from 'react-native';
 import styles from './AllRank_style';
-import { point, top2, top3, top5, crown, reward } from '../../../img/imgIndext';
+import { point, top2, top3, top5, crown, reward, Bill } from '../../../img/imgIndext';
 
 export default class Bill_Rank extends Component {
 
@@ -60,11 +61,24 @@ export default class Bill_Rank extends Component {
 
         Top4to10 = this.state.BillMemberSource.sort((a, b) =>
             b.Member_Total - a.Member_Total
-        ).slice(3)
+        ).slice(3);
+        
+        var TotalHousPoint = 0;
+        var count = this.state.BillMemberSource.length;
+        for(var i = 0 ; i < count ; i++){
+            TotalHousPoint = TotalHousPoint + parseInt(this.state.BillMemberSource[i].Member_Total);
+        }
 
         return (
-            <View style={styles.allPage}>
-
+            <ScrollView style={styles.allPage}>
+                <View style={styles.BillHomeTopView}>
+                    <Image
+                        source={Bill}
+                        style={styles.HomeTopImage}
+                    />
+                    <Text style={styles.TotalScore}>{TotalHousPoint}</Text>
+                    <Text style={styles.scoreText}>Home Score</Text>
+                </View>
                 <FlatList
                     data={Top1}
                     renderItem={this.renderTop1}
@@ -94,7 +108,7 @@ export default class Bill_Rank extends Component {
                     onRefresh={this.handleRefresh}
                 />
 
-            </View>
+            </ScrollView>
         );
     }
 

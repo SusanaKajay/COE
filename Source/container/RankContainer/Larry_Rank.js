@@ -7,9 +7,10 @@ import {
     Dimensions,
     StyleSheet,
     Image,
+    ScrollView,
 } from 'react-native';
 import styles from './AllRank_style';
-import { point, top2, top3, top5, crown, reward } from '../../../img/imgIndext';
+import { point, top2, top3, top5, crown, reward, Larry } from '../../../img/imgIndext';
 
 export default class Larry_Rank extends Component {
 
@@ -61,9 +62,23 @@ export default class Larry_Rank extends Component {
         Top4to10 = this.state.LarrySource.sort((a, b) =>
             b.Member_Total - a.Member_Total
         ).slice(3);
-        return (
-            <View style={styles.allPage}>
+                
+        var TotalHousPoint = 0;
+        var count = this.state.LarrySource.length;
+        for(var i = 0 ; i < count ; i++){
+            TotalHousPoint = TotalHousPoint + parseInt(this.state.LarrySource[i].Member_Total);
+        }
 
+        return (
+            <ScrollView style={styles.allPage}>
+                <View style={styles.LarryHomeTopView}>
+                    <Image
+                        source={Larry}
+                        style={styles.HomeTopImage}
+                    />
+                    <Text style={styles.TotalScore}>{TotalHousPoint}</Text>
+                    <Text style={styles.scoreText}>Home Score</Text>
+                </View>
                 <FlatList
                     data={Top1}
                     renderItem={this.renderTop1}
@@ -93,7 +108,7 @@ export default class Larry_Rank extends Component {
                     onRefresh={this.handleRefresh}
                 />
 
-            </View>
+            </ScrollView>
         );
     }
 

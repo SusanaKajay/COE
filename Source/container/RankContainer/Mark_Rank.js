@@ -7,9 +7,10 @@ import {
     Dimensions,
     StyleSheet,
     Image,
+    ScrollView,
 } from 'react-native';
 import styles from './AllRank_style';
-import { point, top2, top3, top5, crown, reward } from '../../../img/imgIndext';
+import { point, top2, top3, top5, crown, reward, Mark } from '../../../img/imgIndext';
 
 export default class Mark_Rank extends Component {
 
@@ -61,10 +62,24 @@ export default class Mark_Rank extends Component {
         Top4to10 = this.state.MarkMemberSource.sort((a, b) =>
             b.Member_Total - a.Member_Total
         ).slice(3);
-        return (
-            <View style={styles.allPage}>
+        
+        var TotalHousPoint = 0;
+        var count = this.state.MarkMemberSource.length;
+        for(var i = 0 ; i < count ; i++){
+            TotalHousPoint = TotalHousPoint + parseInt(this.state.MarkMemberSource[i].Member_Total);
+        }
 
-<FlatList
+        return (
+            <ScrollView style={styles.allPage}>
+                <View style={styles.MarkHomeTopView}>
+                    <Image
+                        source={Mark}
+                        style={styles.HomeTopImage}
+                    />
+                    <Text style={styles.TotalScore}>{TotalHousPoint}</Text>
+                    <Text style={styles.scoreText}>Home Score</Text>
+                </View>
+                <FlatList
                     data={Top1}
                     renderItem={this.renderTop1}
                     keyExtractor={(item, index) => item.id}
@@ -93,7 +108,7 @@ export default class Mark_Rank extends Component {
                     onRefresh={this.handleRefresh}
                 />
 
-            </View>
+            </ScrollView>
         );
     }
 
