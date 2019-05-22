@@ -32,7 +32,7 @@ class AllEventScreen extends Component {
     componentDidMount() {
         this.RemoteRequest();
     }
-
+    //ResponseJson.filter(index=> index.OpenEvent_StartDate >= today)
     RemoteRequest = () => {
         let today = new Date().toISOString().slice(0, 10);
         const url = 'http://192.168.1.99:3000/send_OpenEvent'
@@ -42,7 +42,9 @@ class AllEventScreen extends Component {
                 this.setState({
                     error: ResponseJson.error || null,
                     loading: false,
-                    OpenEventSource: ResponseJson
+                    OpenEventSource: ResponseJson.sort((a, b) =>
+                        parseInt(a.OpenEvent_StartTime) - parseInt(b.OpenEvent_StartTime)
+                        ) && ResponseJson.filter(index=> index.OpenEvent_StartDate >= today)
                 });
             })
             .catch(error => {
@@ -76,10 +78,10 @@ class AllEventScreen extends Component {
                         source={{ uri: item.OpenEvent_Picture }}
                         style={styles.image}
                     />
-                    <Text style={{fontWeight: 'bold',fontSize: 20,color: '#e80083',marginRight: 10,marginLeft:10}}>{item.OpenEvent_Name}</Text>
-                    <Text style={{color: 'gray',fontSize: 18,marginRight: 10,marginLeft:10,marginBottom:20}}>จัดโดย {item.CreatedBy_ID}</Text>
+                    <Text style={{ fontWeight: 'bold', fontSize: 20, color: '#e80083', marginRight: 10, marginLeft: 10 }}>{item.OpenEvent_Name}</Text>
+                    <Text style={{ color: 'gray', fontSize: 18, marginRight: 10, marginLeft: 10, marginBottom: 20 }}>จัดโดย {item.CreatedBy_ID}</Text>
 
-                    
+
                 </TouchableOpacity>
             </View>
         )
