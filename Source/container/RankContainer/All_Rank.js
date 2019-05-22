@@ -14,7 +14,7 @@ import { createStackNavigator, createAppContainer } from 'react-navigation';
 import styles from './AllRank_style'
 import { Bill, Elon, Larry, Mark } from '../../../img/imgIndext'
 import { point, top2, top3, top5, crown } from '../../../img/imgIndext';
-
+import {memberAPI, HomeColor} from '../../themes/variables';
 
 import Bill_Rank_Screen from './Bill_Rank';
 import Elon_Rank_Screen from './Elon_Rank';
@@ -72,8 +72,7 @@ class All_Rank extends Component {
     }
 
     RemoteRequest = () => {
-        const url = 'http://192.168.1.99:3000/send_Member'
-        fetch(url)
+        fetch(memberAPI.url)
             .then((Response) => Response.json())
             .then((ResponseJson) => {
                 this.setState({
@@ -300,7 +299,7 @@ const RootStack = createStackNavigator(
                 title: 'Bill Gates',
                 headerTintColor: 'white',
                 headerStyle: {
-                    backgroundColor: '#800080'
+                    backgroundColor: HomeColor.Bill,
                 }
             }
         },
@@ -310,7 +309,7 @@ const RootStack = createStackNavigator(
                 title: 'Elon Musk',
                 headerTintColor: 'white',
                 headerStyle: {
-                    backgroundColor: '#ffa500'
+                    backgroundColor: HomeColor.Elon,
                 }
             }
         },
@@ -320,7 +319,7 @@ const RootStack = createStackNavigator(
                 title: 'Larry Page',
                 headerTintColor: 'white',
                 headerStyle: {
-                    backgroundColor: '#B20000'
+                    backgroundColor: HomeColor.Larry,
                 }
             }
         },
@@ -330,7 +329,7 @@ const RootStack = createStackNavigator(
                 title: 'Mark Zuckerberg',
                 headerTintColor: 'white',
                 headerStyle: {
-                    backgroundColor: '#e80083'
+                    backgroundColor: HomeColor.Mark,
                 }
             }
         },

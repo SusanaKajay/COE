@@ -9,6 +9,7 @@ import {
 import styles from './Style';
 import { coin, box } from '../../../img/imgIndext';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
+import {rewardAPI} from '../../themes/variables'
 
 class Reward extends Component {
 
@@ -29,8 +30,7 @@ class Reward extends Component {
   }
 
   RemoteRequest = () => {
-    const url = 'http://192.168.1.99:3000/send_Reward'
-    fetch(url)
+    fetch(rewardAPI.url)
       .then((Response) => Response.json())
       .then((ResponseJson) => {
         this.setState({

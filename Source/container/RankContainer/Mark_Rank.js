@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import styles from './AllRank_style';
 import { point, top2, top3, top5, crown, reward, Mark } from '../../../img/imgIndext';
+import {memberAPI} from '../../themes/variables';
 
 export default class Mark_Rank extends Component {
 
@@ -31,8 +32,7 @@ export default class Mark_Rank extends Component {
     }
 
     RemoteRequest = () => {
-        const url = 'http://192.168.1.99:3000/send_Member'
-        fetch(url)
+        fetch(memberAPI.url)
             .then((Response) => Response.json())
             .then((ResponseJson) => {
                 this.setState({

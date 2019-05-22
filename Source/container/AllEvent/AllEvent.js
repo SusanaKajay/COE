@@ -14,6 +14,7 @@ import Detail_style from './Detail_style';
 import Icon from 'react-native-vector-icons/SimpleLineIcons';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 import { pin, point } from '../../../img/imgIndext'
+import {EventAPI} from '../../../Source/themes/variables';
 
 class AllEventScreen extends Component {
 
@@ -35,8 +36,7 @@ class AllEventScreen extends Component {
     //ResponseJson.filter(index=> index.OpenEvent_StartDate >= today)
     RemoteRequest = () => {
         let today = new Date().toISOString().slice(0, 10);
-        const url = 'http://192.168.1.99:3000/send_OpenEvent'
-        fetch(url)
+        fetch(EventAPI.url)
             .then((Response) => Response.json())
             .then((ResponseJson) => {
                 this.setState({
@@ -146,8 +146,7 @@ class EventDetailScreen extends Component {
         const { navigation } = this.props;
         const EventId = navigation.getParam('Event_id', 'NO-ID');
 
-        const url = 'http://192.168.1.99:3000/send_OpenEvent'
-        fetch(url)
+        fetch(EventAPI.url)
             .then((Response) => Response.json())
             .then((ResponseJson) => {
                 this.setState({
