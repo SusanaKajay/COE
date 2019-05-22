@@ -48,6 +48,8 @@ class AllEventScreen extends Component {
                         parseInt(a.OpenEvent_EndTime) - parseInt(b.OpenEvent_EndTime)
                     )&& ResponseJson.sort((a, b) =>
                         a.OpenEvent_StartDate - b.OpenEvent_StartDate
+                    )&& ResponseJson.sort((a, b) =>
+                        a.OpenEvent_EndDate - b.OpenEvent_EndDate
                     ) && ResponseJson.filter(index =>
                         index.OpenEvent_StartDate >= today
                     )
