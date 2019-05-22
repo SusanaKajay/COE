@@ -10,7 +10,7 @@ export default StyleSheet.create({
         backgroundColor: 'white',
     },
     HomeView: {
-        backgroundColor: 'white',
+        backgroundColor: '#e80083',
         borderBottomColor: 'gray',
         justifyContent: 'center',
         alignItems: 'center',
@@ -26,7 +26,7 @@ export default StyleSheet.create({
     btnView: {
         justifyContent: 'center',
         alignItems: 'center',
-        margin: 5,
+        margin: 10,
     },
     ListBox: {
         marginTop: 10,

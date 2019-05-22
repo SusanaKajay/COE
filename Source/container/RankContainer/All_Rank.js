@@ -157,7 +157,6 @@ class All_Rank extends Component {
                     >
                         <View style={styles.btnView}>
                             <Image style={styles.HomeBtn} source={Bill} />
-                            <Text style={styles.textHome}>Bill Gates</Text>
                         </View>
 
                     </TouchableOpacity>
@@ -167,7 +166,6 @@ class All_Rank extends Component {
                     >
                         <View style={styles.btnView}>
                             <Image style={styles.HomeBtn} source={Elon} />
-                            <Text style={styles.textHome}>Elon Musk</Text>
                         </View>
 
                     </TouchableOpacity>
@@ -177,7 +175,6 @@ class All_Rank extends Component {
                     >
                         <View style={styles.btnView}>
                             <Image style={styles.HomeBtn} source={Larry} />
-                            <Text style={styles.textHome}>Larry Page</Text>
                         </View>
 
                     </TouchableOpacity>
@@ -187,7 +184,6 @@ class All_Rank extends Component {
                     >
                         <View style={styles.btnView}>
                             <Image style={styles.HomeBtn} source={Mark} />
-                            <Text style={styles.textHome}>Mark Zuckerberg</Text>
                         </View>
 
                     </TouchableOpacity>
