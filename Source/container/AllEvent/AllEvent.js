@@ -44,7 +44,13 @@ class AllEventScreen extends Component {
                     loading: false,
                     OpenEventSource: ResponseJson.sort((a, b) =>
                         parseInt(a.OpenEvent_StartTime) - parseInt(b.OpenEvent_StartTime)
-                        ) && ResponseJson.filter(index=> index.OpenEvent_StartDate >= today)
+                    ) && ResponseJson.sort((a, b) =>
+                        parseInt(a.OpenEvent_EndTime) - parseInt(b.OpenEvent_EndTime)
+                    )&& ResponseJson.sort((a, b) =>
+                        a.OpenEvent_StartDate - b.OpenEvent_StartDate
+                    ) && ResponseJson.filter(index =>
+                        index.OpenEvent_StartDate >= today
+                    )
                 });
             })
             .catch(error => {
