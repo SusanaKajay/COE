@@ -7,10 +7,11 @@ import {
   Image,
 } from 'react-native';
 import styles from './Style';
-import { coin, box } from '../../../img/imgIndext'
+import { coin, box } from '../../../img/imgIndext';
+import { createStackNavigator, createAppContainer } from 'react-navigation';
 
-export default class Reward extends Component {
-  
+class Reward extends Component {
+
   constructor() {
     super()
     this.state = {
@@ -35,7 +36,7 @@ export default class Reward extends Component {
         this.setState({
           error: ResponseJson.error || null,
           loading: false,
-          RewardSource: ResponseJson.sort((a, b) => a.Reward_Point - b.Reward_Point) && ResponseJson.filter(index => index.Reward_Quantity != 0) ,
+          RewardSource: ResponseJson.sort((a, b) => a.Reward_Point - b.Reward_Point) && ResponseJson.filter(index => index.Reward_Quantity != 0),
         });
       })
       .catch(error => {
@@ -53,7 +54,6 @@ export default class Reward extends Component {
           keyExtractor={(item, index) => item.id}
           refreshing={this.state.refreshing}
           onRefresh={this.handleRefresh}
-          ListHeaderComponent={this.renderHeader}
           ListFooterComponent={this.renderFooter}
         />
       </View>
@@ -65,24 +65,24 @@ export default class Reward extends Component {
       <View style={styles.ListBox}>
         <View style={styles.imageView}>
           <Image
-            source = {{ uri: item.Reward_Photo }}
-            style = { styles.image }
-          /> 
+            source={{ uri: item.Reward_Photo }}
+            style={styles.image}
+          />
         </View>
         <View style={styles.DetaiilView}>
-            <View style={styles.NameOfDetailView}>
-              <Text style={styles.nameText}>{item.Reward_Name}</Text>
+          <View style={styles.NameOfDetailView}>
+            <Text style={styles.nameText}>{item.Reward_Name}</Text>
+          </View>
+          <View style={styles.SupDetailView}>
+            <View style={styles.SupView}>
+              <Image source={coin} style={styles.icon} />
+              <Text style={styles.DetailText}>{item.Reward_Point}</Text>
             </View>
-            <View style={styles.SupDetailView}>
-              <View style={styles.SupView}>
-                <Image source= {coin} style={styles.icon}/>
-                <Text style={styles.DetailText}>{item.Reward_Point}</Text>
-              </View>
-              <View style={styles.SupView}>
-                <Image source= {box} style={styles.icon}/>
-                <Text style={styles.DetailText}>x {item.Reward_Quantity}</Text>
-              </View>
+            <View style={styles.SupView}>
+              <Image source={box} style={styles.icon} />
+              <Text style={styles.DetailText}>x {item.Reward_Quantity}</Text>
             </View>
+          </View>
         </View>
       </View>
     )
@@ -98,13 +98,8 @@ export default class Reward extends Component {
     }
   }
 
-  renderHeader = () => {
-    return (
-      <View style={styles.Header} >
-        <Text style={styles.FontHeader} >Reward</Text>
-      </View>
-    )
-  };
+
+
 
   renderFooter = () => {
     if (!this.state.loading) return null;
@@ -122,4 +117,31 @@ export default class Reward extends Component {
     )
   }
 
+}
+
+
+const RootStack = createStackNavigator(
+  {
+    Reward: {
+      screen: Reward,
+      navigationOptions: {
+        title: 'COE Rewards',
+        headerTintColor: 'white',
+        headerStyle: {
+          backgroundColor: '#e80083'
+        }
+      }
+    },
+  },
+  {
+    initialRouteName: 'Reward',
+  }
+);
+
+const AppContainer = createAppContainer(RootStack);
+
+export default class App extends React.Component {
+  render() {
+    return <AppContainer />;
+  }
 }

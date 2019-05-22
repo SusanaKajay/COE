@@ -23,8 +23,6 @@ export default StyleSheet.create({
     image:{
         height: height/3,
         width: width/2.2,
-        borderTopLeftRadius: 15,
-        borderTopRightRadius: 15,
     },
     DetaiilView:{
         borderColor: 'gray',
@@ -62,13 +60,7 @@ export default StyleSheet.create({
     ListBox:{
         borderWidth: 2,
         borderColor: 'gray',
-        borderRadius: 15,
         margin: 7,
-    },
-    FontHeader:{
-        color: 'white',
-        fontSize: 20,
-        fontWeight: 'bold'
     }
 
 });

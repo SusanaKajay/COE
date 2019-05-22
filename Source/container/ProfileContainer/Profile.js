@@ -10,11 +10,11 @@ import {
 import styles from './Style';
 import { coin, point } from '../../../img/imgIndext'
 import { TouchableOpacity } from 'react-native-gesture-handler';
-
+import { createStackNavigator, createAppContainer } from 'react-navigation';
 
 const { height, width } = Dimensions.get('window');
 
-export default class Profile extends Component {
+class Profile extends Component {
 
     static navigationOption={
         title: "Profile",
@@ -131,3 +131,30 @@ export default class Profile extends Component {
         )
     }
 }
+
+
+const RootStack = createStackNavigator(
+    {
+        Profile: {
+        screen: Profile,
+        navigationOptions: {
+          title: 'Profile',
+          headerTintColor: 'white',
+          headerStyle: {
+            backgroundColor: '#e80083'
+          }
+        }
+      },
+    },
+    {
+      initialRouteName: 'Profile',
+    }
+  );
+  
+  const AppContainer = createAppContainer(RootStack);
+  
+  export default class App extends React.Component {
+    render() {
+      return <AppContainer />;
+    }
+  }
