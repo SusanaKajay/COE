@@ -11,7 +11,6 @@ export default StyleSheet.create({
     },
     HomeView:{
         backgroundColor: 'white',
-        borderBottomWidth: 2,
         borderBottomColor: 'gray',
         justifyContent:'center', 
         alignItems: 'center',
@@ -35,23 +34,23 @@ export default StyleSheet.create({
         alignItems: 'center',
     },
     image:{
-        height: width/4,
-        width: width/4,
+        height: width/6,
+        width: width/6,
+        marginRight: 10,
         borderRadius: 100,
         marginLeft: 20,
     },
     DetailView: {
-        marginLeft: 20,
         flexDirection: 'column'
     },
     name:{
-        fontSize: 20,
+        fontSize: 18,
         fontWeight: 'bold',
         color: 'black',
     },
     icon:{
-        width: width/10,
-        height: width/10,
+        width: width/15,
+        height: width/15,
         marginRight: 10,
     },
     pointView:{
@@ -67,5 +66,50 @@ export default StyleSheet.create({
         fontSize: 15,
         color: 'gray',
         fontWeight: 'normal',
+    },
+    rewardIcon:{
+        width: width/8,
+        height: width/8
+    },
+    rewardView:{
+        width: width/8,
+        height: width/8,
+        marginLeft:10,
+        alignItems:'center',
+        justifyContent:'center'
+    },
+    image2:{
+        height: width/8,
+        width: width/8,
+        marginRight: 10,
+        borderRadius: 100,
+        marginLeft: 20,
+    },
+    name2:{
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: 'black',
+    },
+    icon2:{
+        width: width/17,
+        height: width/17,
+        marginRight: 10,
+    },
+    point2:{
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: '#E80083',
+    },
+    banner:{
+        width: width,
+        height: width/8,
+        backgroundColor: '#e80083',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    bannerText:{
+        fontSize: 20,
+        color: 'white',
+        fontWeight: 'bold',
     }
 });
