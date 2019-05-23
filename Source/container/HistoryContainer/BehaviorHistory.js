@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {
+    AppRegistry,
     FlatList,
     ActivityIndicator,
     Text,
@@ -32,15 +33,13 @@ export default class BehavHistory extends Component {
 
     RemoteRequest = () => {
 
-        getVariableFromLogin = '58113242'
-
         fetch(BehavHisAPI.url)
             .then((Response) => Response.json())
             .then((ResponseJson) => {
                 this.setState({
                     error: ResponseJson.error || null,
                     loading: false,
-                    BehavHistorySource: ResponseJson.filter(index => index.Member_ID === getVariableFromLogin),
+                    BehavHistorySource: ResponseJson.filter(index => index.Member_ID === 58113242),
                 });
             })
             .catch(error => {
@@ -49,8 +48,11 @@ export default class BehavHistory extends Component {
     }
 
     render() {
+        const { navigation } = this.props;
+        const id = navigation.getParam('id', 'NO-ID');
         return (
             <View style={styles.allPage}>
+                <Text>{id}</Text>
                 <FlatList
                     data={this.state.BehavHistorySource}
                     renderItem={this.JoinCard}
@@ -89,3 +91,5 @@ export default class BehavHistory extends Component {
         )
     }
 }
+
+AppRegistry.registerComponent('BehavHistory', () => BehavHistory);

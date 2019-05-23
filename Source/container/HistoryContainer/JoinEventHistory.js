@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {
+    AppRegistry,
     FlatList,
     ActivityIndicator,
     Text,
@@ -31,7 +32,8 @@ export default class JoinEventHistory extends Component {
 
     RemoteRequest = () => {
 
-        getVariableFromLogin = '58113242'
+        const { navigation } = this.props;
+        const id = navigation.getParam('id', 'NO-ID');
 
         fetch(JoinHisAPI.url)
             .then((Response) => Response.json())
@@ -39,7 +41,7 @@ export default class JoinEventHistory extends Component {
                 this.setState({
                     error: ResponseJson.error || null,
                     loading: false,
-                    JoinEventHistrySource: ResponseJson.filter(index => index.Member_ID === getVariableFromLogin),
+                    JoinEventHistrySource: ResponseJson.filter(index => index.Member_ID === id),
                 });
             })
             .catch(error => {
@@ -79,3 +81,5 @@ export default class JoinEventHistory extends Component {
         )
     }
 }
+
+AppRegistry.registerComponent('JoinEventHistory', () => JoinEventHistory);

@@ -41,7 +41,7 @@ class Profile extends Component {
 
     RemoteRequest = () => {
 
-        const getVariableFromLogin = '58113242'
+        const getVariableFromLogin = '58113246'
 
         fetch(memberAPI.url)
             .then((Response) => Response.json())
@@ -66,7 +66,7 @@ class Profile extends Component {
                     keyExtractor={(item, index) => item.id}
                 />
                 <TouchableOpacity
-                    onPress={() => this.props.navigation.navigate('JoinHistory', { id: this.state.MemberSource.Member_ID })}
+                    onPress={() => this.props.navigation.navigate('JoinEventHistory', { id: this.state.MemberSource[0].Member_ID})}
                 >
                     <View style={styles.btn}>
                         <Text style={styles.btnText}>Join Event History</Text>
@@ -74,7 +74,7 @@ class Profile extends Component {
                 </TouchableOpacity>
 
                 <TouchableOpacity
-                    onPress={() => this.props.navigation.navigate('BehavHistory', { id: this.state.MemberSource.Member_ID })}
+                    onPress={() => this.props.navigation.navigate('BehavHistory', { id: this.state.MemberSource[0].Member_ID})}
                 >
                     <View style={styles.btn}>
                         <Text style={styles.btnText}>Behavior History</Text>
@@ -82,7 +82,7 @@ class Profile extends Component {
                 </TouchableOpacity>
 
                 <TouchableOpacity
-                    onPress={() => this.props.navigation.navigate('RedeemHistory', { id: this.state.MemberSource.Member_ID })}
+                    onPress={() => this.props.navigation.navigate('RedeemHistory', { id: this.state.MemberSource[0].Member_ID})}
                 >
                     <View style={styles.btn}>
                         <Text style={styles.btnText}>Redeem History</Text>
@@ -181,7 +181,7 @@ const RootStack = createStackNavigator(
                 }
             }
         },
-        JoinHistory: {
+        JoinEventHistory: {
             screen: JoinEventHistory,
             navigationOptions: {
                 title: 'Join Event History',

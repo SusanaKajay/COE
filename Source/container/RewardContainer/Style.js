@@ -61,6 +61,17 @@ export default StyleSheet.create({
         borderWidth: 2,
         borderColor: 'gray',
         margin: 7,
+    },
+    TotalPointView:{
+        width: width,
+        height: height/3,
+        backgroundColor: '#e80083',
+        alignItems: 'center',
+        justifyContent:'center',
+    },
+    PointText:{
+        fontSize: 20,
+        fontWeight: 'bold',
+        color: 'white'
     }
-
 });

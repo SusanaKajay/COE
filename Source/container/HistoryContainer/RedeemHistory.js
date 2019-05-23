@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {
+    AppRegistry,
     FlatList,
     ActivityIndicator,
     Text,
@@ -31,7 +32,8 @@ export default class RedeemHistory extends Component {
 
     RemoteRequest = () => {
 
-        getVariableFromLogin = '58113242'
+        const { navigation } = this.props;
+        const id = navigation.getParam('id', '58113242');
 
         fetch(RedeemHisAPI.url)
             .then((Response) => Response.json())
@@ -39,7 +41,7 @@ export default class RedeemHistory extends Component {
                 this.setState({
                     error: ResponseJson.error || null,
                     loading: false,
-                    RedeemHistory: ResponseJson.filter(index => index.Member_ID.toString() === getVariableFromLogin),
+                    RedeemHistory: ResponseJson.filter(index => index.Member_ID.toString() === id),
                 });
             })
             .catch(error => {
@@ -80,3 +82,4 @@ export default class RedeemHistory extends Component {
     }
 }
 
+AppRegistry.registerComponent('RedeemHistory', () => RedeemHistory);

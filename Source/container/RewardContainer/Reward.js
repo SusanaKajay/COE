@@ -9,7 +9,9 @@ import {
 import styles from './Style';
 import { coin, box } from '../../../img/imgIndext';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
-import {rewardAPI} from '../../themes/variables'
+import { rewardAPI, memberAPI } from '../../themes/variables'
+
+const getDataFromLogin = "58113242";
 
 class Reward extends Component {
 
@@ -17,6 +19,7 @@ class Reward extends Component {
     super()
     this.state = {
       RewardSource: [],
+      MemberSource: [],
       loading: false,
       refreshing: false,
       error: null,
@@ -30,6 +33,7 @@ class Reward extends Component {
   }
 
   RemoteRequest = () => {
+
     fetch(rewardAPI.url)
       .then((Response) => Response.json())
       .then((ResponseJson) => {
@@ -42,11 +46,33 @@ class Reward extends Component {
       .catch(error => {
         this.setState({ error, loading: false, refreshing: false })
       });
+
+    fetch(memberAPI.url)
+      .then((Response) => Response.json())
+      .then((ResponseJson) => {
+        this.setState({
+          error: ResponseJson.error || null,
+          loading: false,
+          MemberSource: ResponseJson.filter(index => index.Member_ID === "58113242"),
+        });
+      })
+      .catch(error => {
+        this.setState({ error, loading: false, refreshing: false })
+      });
   }
 
   render() {
+    MyPoint = this.state.MemberSource.Member_ID
     return (
       <View style={styles.AllPage}>
+        <FlatList
+          data={this.state.MemberSource}
+          renderItem={this.renderMemberItem}
+          keyExtractor={(item, index) => item.id}
+          refreshing={this.state.refreshing}
+          onRefresh={this.handleRefresh}
+          ListFooterComponent={this.renderFooter}
+        />
         <FlatList
           data={this.state.RewardSource}
           renderItem={this.renderItem}
@@ -60,6 +86,13 @@ class Reward extends Component {
     );
   }
 
+  renderMemberItem = ({ item }) => {
+    return (
+      <View style={styles.TotalPointView}>
+        <Text style={styles.PointText}>{item.Member_Available}</Text>
+      </View>
+    )
+  }
   renderItem = ({ item }) => {
     return (
       <View style={styles.ListBox}>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {
+    AppRegistry,
     FlatList,
     ActivityIndicator,
     Text,
@@ -202,3 +203,5 @@ export default class Elon_Rank extends Component {
     }
 
 }
+
+AppRegistry.registerComponent('Elon_Rank', () => Elon_Rank);

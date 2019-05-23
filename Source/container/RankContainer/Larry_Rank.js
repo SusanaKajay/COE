@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {
+    AppRegistry,
     FlatList,
     ActivityIndicator,
     Text,
@@ -61,7 +62,7 @@ export default class Larry_Rank extends Component {
 
         Top4to10 = this.state.LarrySource.sort((a, b) =>
             b.Member_Total - a.Member_Total
-        ).slice(3);
+        ).slice(3,10);
                 
         var TotalHousPoint = 0;
         var count = this.state.LarrySource.length;
@@ -200,3 +201,5 @@ export default class Larry_Rank extends Component {
     }
 
 }
+
+AppRegistry.registerComponent('Larry_Rank', () => Larry_Rank);
