@@ -12,7 +12,8 @@ import {
 } from 'react-native';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 import { coin, box, calendar } from '../../../img/imgIndext';
-import {BehavHisAPI} from '../../themes/variables';
+import { BehavHisAPI } from '../../themes/variables';
+import styles from './style';
 
 
 export default class BehavHistory extends Component {
@@ -39,7 +40,7 @@ export default class BehavHistory extends Component {
                 this.setState({
                     error: ResponseJson.error || null,
                     loading: false,
-                    BehavHistorySource: ResponseJson.filter(index => index.Member_ID ===  getVariableFromLogin),
+                    BehavHistorySource: ResponseJson.filter(index => index.Member_ID === getVariableFromLogin),
                 });
             })
             .catch(error => {
@@ -47,9 +48,9 @@ export default class BehavHistory extends Component {
             });
     }
 
-    render(){
-        return(
-            <View>
+    render() {
+        return (
+            <View style={styles.allPage}>
                 <FlatList
                     data={this.state.BehavHistorySource}
                     renderItem={this.JoinCard}
@@ -60,12 +61,30 @@ export default class BehavHistory extends Component {
     }
 
     JoinCard = ({ item }) => {
-        return(
-            <View>
-                <Text>{item.Behavior_Name}</Text>
-                <Text>{item.Behavior_Point} point</Text>
-                <Text>{item.JoinBehavior_Date} </Text>
-                <Text>{item.JoinBehavior_Admin}</Text>
+        return (
+            <View style={styles.allPage}>
+                <View style={styles.card}>
+                    <View style={styles.subCard}>
+                        <View style={styles.subCard2}>
+                            <Text style={styles.TextName}>{item.Behavior_Name}</Text>
+                        </View>
+
+                        <View style={styles.subCard3}>
+                            <Text style={styles.TextBehav}>-{item.Behavior_Point} point</Text>
+                        </View>
+                    </View>
+                    <View style={styles.subCard}>
+                        <View style={styles.subCard2}>
+                            <Text style={styles.normalText}>{item.JoinBehavior_Date} </Text>
+                        </View>
+
+                        <View style={styles.subCard3}>
+                            <Text style={styles.normalText}>Edit By: {item.JoinBehavior_Admin}</Text>
+                        </View>
+                    </View>
+
+                </View>
+
             </View>
         )
     }

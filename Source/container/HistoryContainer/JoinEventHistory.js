@@ -12,8 +12,8 @@ import {
 } from 'react-native';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 import { coin, box, calendar } from '../../../img/imgIndext';
-import {JoinHisAPI} from '../../themes/variables';
-
+import { JoinHisAPI } from '../../themes/variables';
+import styles from './style';
 
 export default class JoinEventHistory extends Component {
 
@@ -39,7 +39,7 @@ export default class JoinEventHistory extends Component {
                 this.setState({
                     error: ResponseJson.error || null,
                     loading: false,
-                    JoinEventHistrySource: ResponseJson.filter(index => index.Member_ID ===  getVariableFromLogin),
+                    JoinEventHistrySource: ResponseJson.filter(index => index.Member_ID === getVariableFromLogin),
                 });
             })
             .catch(error => {
@@ -47,9 +47,9 @@ export default class JoinEventHistory extends Component {
             });
     }
 
-    render(){
-        return(
-            <View>
+    render() {
+        return (
+            <View style={styles.allPage}>
                 <FlatList
                     data={this.state.JoinEventHistrySource}
                     renderItem={this.JoinCard}
@@ -60,11 +60,21 @@ export default class JoinEventHistory extends Component {
     }
 
     JoinCard = ({ item }) => {
-        return(
-            <View>
-                <Text>{item.JoinEvent_Date}</Text>
-                <Text>{item.OpenEvent_Name}</Text>
-                <Text>{item.OpenEvent_Point} point</Text>
+        return (
+            <View style={styles.allPage}>
+                <View style={styles.card}>
+                    <View style={styles.subCard}>
+                        <View style={styles.subCard2}>
+                            <Text style={styles.TextName}>{item.OpenEvent_Name}</Text>
+                        </View>
+                        <View style={styles.subCard3}>
+                            <Text style={styles.TextPoint}>{item.OpenEvent_Point} point</Text>
+                        </View>
+                    </View>
+                    <View style={styles.subCard}>
+                        <Text style={styles.normalText}>{item.JoinEvent_Date}</Text>
+                    </View>
+                </View>
             </View>
         )
     }
