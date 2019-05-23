@@ -11,18 +11,17 @@ import {
     TouchableOpacity
 } from 'react-native';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
-import { coin, box, calendar } from '../../../img/imgIndext'
+import { coin, box, calendar } from '../../../img/imgIndext';
+import {RedeemHisAPI} from '../../themes/variables';
 
-const { height, width } = Dimensions.get('window');
 
-export default class RedeemHistry extends Component {
+export default class RedeemHistory extends Component {
 
     constructor() {
         super();
         this.state = {
-            JoinSource: [],
-            loading: true,
-            errorLoad: false,
+            RedeemHistorySource: [],
+            loading: false,
         }
     }
 
@@ -31,39 +30,42 @@ export default class RedeemHistry extends Component {
     }
 
     RemoteRequest = () => {
-        const url = ''
-        fetch(url)
+
+        getVariableFromLogin = '58113242'
+
+        fetch(RedeemHisAPI.url)
             .then((Response) => Response.json())
             .then((ResponseJson) => {
                 this.setState({
+                    error: ResponseJson.error || null,
                     loading: false,
-                    //ยังไม่ได้ฟิลเตอร์
-                    JoinSource: ResponseJson
-                })
+                    RedeemHistory: ResponseJson.filter(index => index.Member_ID.toString() ===  getVariableFromLogin),
+                });
             })
             .catch(error => {
-                this.setState({ error })
+                this.setState({ error, loading: false })
             });
     }
 
-    render() {
-        return (
+    render(){
+        return(
             <View>
                 <FlatList
-                    data={this.state.JoinSource}
-                    renderItem={this.renderItem}
+                    data={this.state.RedeemHistory}
+                    renderItem={this.RedeemCard}
                     keyExtractor={(item, index) => item.id}
                 />
             </View>
         )
     }
 
-    renderItem = ({ item }) => {
-        return (
+    RedeemCard = ({ item }) => {
+        return(
             <View>
-                <Text></Text>
+                <Text>{item.Reward_Name}</Text>
+                <Text>{item.RedeemReward_Quantity}</Text>
+                <Text>{item.Reward_Point}</Text>
             </View>
         )
     }
-
 }

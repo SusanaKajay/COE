@@ -10,7 +10,7 @@ import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
 
 import Tab from './Source/screen/TabNavigation';
-
+//import A from './Source/container/HistoryContainer/RedeemHistory'
 export default class App extends Component {
   render() {
     return (
