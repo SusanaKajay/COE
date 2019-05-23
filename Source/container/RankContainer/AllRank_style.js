@@ -10,11 +10,11 @@ export default StyleSheet.create({
         backgroundColor: 'white',
     },
     HomeView: {
-        backgroundColor: '#e80083',
+        backgroundColor: 'white',
         borderBottomColor: 'gray',
         justifyContent: 'center',
         alignItems: 'center',
-        flexDirection: 'row',
+        flexDirection: 'column',
     },
     HomeBtn: {
         width: width / 5,
@@ -106,6 +106,7 @@ export default StyleSheet.create({
         backgroundColor: '#e80083',
         alignItems: 'center',
         justifyContent: 'center',
+        marginBottom: 5
     },
     bannerText: {
         fontSize: 20,
@@ -167,5 +168,43 @@ export default StyleSheet.create({
         fontSize: 25,
         fontWeight: 'normal',
         color: 'white'
+    },
+    btnSeeMoreView:{
+        width: width,
+        height: width/10,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    SeemoreText:{
+        fontSize: 18,
+        fontWeight: 'normal',
+        color: '#e80083'
+    },
+    TexScore:{
+        fontSize: 20,
+        fontWeight: 'bold',
+        color: 'white'
+    },
+    ScoreView:{
+        flexDirection: 'column',
+        marginLeft: 10,
+        flex: 0.5
+    },
+    OutScoreView:{
+        flexDirection: 'row',
+        flex: 1,
+        alignItems: 'center'
+    },
+    RankView:{
+        flexDirection: 'row-reverse',
+        flex: 0.5
+    },
+    TextRank:{
+        fontWeight: 'bold',
+        fontSize: 20,
+        color: 'white'
+    },
+    RankView1:{
+        flexDirection: 'column'
     }
 });

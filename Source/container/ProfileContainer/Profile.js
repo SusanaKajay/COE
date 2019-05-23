@@ -41,7 +41,7 @@ class Profile extends Component {
 
     RemoteRequest = () => {
 
-        const getVariableFromLogin = '58113246'
+        const getVariableFromLogin = '58113242'
 
         fetch(memberAPI.url)
             .then((Response) => Response.json())

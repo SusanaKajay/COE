@@ -10,3 +10,4 @@ export const HomeColor = {
 export const JoinHisAPI = {url : 'http://192.168.1.99:3000/send_JoinEvent'};
 export const RedeemHisAPI = {url : 'http://192.168.1.99:3000/send_RedeemReward'};
 export const BehavHisAPI = {url : 'http://192.168.1.99:3000/send_BehaviorHistory'};
+export const HouseApi = {url: 'http://192.168.1.99:3000/send_House'}

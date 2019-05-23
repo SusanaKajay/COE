@@ -68,10 +68,26 @@ export default StyleSheet.create({
         backgroundColor: '#e80083',
         alignItems: 'center',
         justifyContent:'center',
+        flexDirection: 'column'
+    },
+    PointView:{
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     PointText:{
-        fontSize: 20,
+        fontSize: 50,
         fontWeight: 'bold',
+        color: '#ffa500'
+    },
+    PointIcon:{
+        height: width/8,
+        width: width/8,
+        marginRight: 10,
+    },
+    PointText2:{
+        fontSize: 25,
+        fontWeight: 'normal',
         color: 'white'
     }
 });

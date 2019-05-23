@@ -86,8 +86,9 @@ class AllEventScreen extends Component {
                         source={{ uri: item.OpenEvent_Picture }}
                         style={styles.image}
                     />
-                    <Text style={{ fontWeight: 'bold', fontSize: 20, color: '#e80083', marginRight: 10, marginLeft: 10 }}>{item.OpenEvent_Name}</Text>
-                    <Text style={{ color: 'gray', fontSize: 18, marginRight: 10, marginLeft: 10, marginBottom: 20 }}>จัดโดย {item.CreatedBy_ID}</Text>
+                    <View>
+                        
+                    </View>
 
 
                 </TouchableOpacity>

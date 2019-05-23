@@ -89,7 +89,14 @@ class Reward extends Component {
   renderMemberItem = ({ item }) => {
     return (
       <View style={styles.TotalPointView}>
-        <Text style={styles.PointText}>{item.Member_Available}</Text>
+        <Text style={styles.PointText2}>My Wallet</Text>
+        <View style={styles.PointView}>
+          <Image
+            source={coin}
+            style={styles.PointIcon}
+          />
+          <Text style={styles.PointText}>{item.Member_Available}</Text>
+        </View>
       </View>
     )
   }
@@ -130,9 +137,6 @@ class Reward extends Component {
       this.RemoteRequest();
     }
   }
-
-
-
 
   renderFooter = () => {
     if (!this.state.loading) return null;
