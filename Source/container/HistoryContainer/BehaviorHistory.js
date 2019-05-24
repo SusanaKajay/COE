@@ -49,7 +49,6 @@ export default class BehavHistory extends Component {
     }
 
     render() {
-
         return (
             <View style={styles.allPage}>
                 <FlatList

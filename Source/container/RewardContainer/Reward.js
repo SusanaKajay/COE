@@ -21,7 +21,6 @@ class Reward extends Component {
     super()
     this.state = {
       RewardSource: [],
-      RewardSortData: [],
       MemberSource: [],
       sortDataBy: 'latest',
       loading: false,
@@ -80,7 +79,6 @@ class Reward extends Component {
           onRefresh={this.handleRefresh}
           ListFooterComponent={this.renderFooter}
         />
-
         <FlatList
           data={this.state.RewardSource}
           renderItem={this.renderItem}

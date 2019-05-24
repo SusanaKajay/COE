@@ -9,9 +9,9 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
 
-import Tab from './Source/screen/TabNavigation';
+//import Tab from './Source/screen/TabNavigation';
 //import Test from './Source/container/TestScreen/AllEventScreen'
-
+import Tab from './Source/container/SignInContainer/SignIn'
 export default class App extends Component {
   render() {
     return (
