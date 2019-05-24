@@ -64,7 +64,7 @@ export default StyleSheet.create({
     },
     TotalPointView:{
         width: width,
-        height: height/3,
+        height: height/5,
         backgroundColor: '#e80083',
         alignItems: 'center',
         justifyContent:'center',
@@ -81,8 +81,8 @@ export default StyleSheet.create({
         color: '#ffa500'
     },
     PointIcon:{
-        height: width/8,
-        width: width/8,
+        height: width/15,
+        width: width/15,
         marginRight: 10,
     },
     PointText2:{

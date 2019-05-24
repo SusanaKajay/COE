@@ -5,6 +5,8 @@ import {
   Text,
   View,
   Image,
+  Picker,
+  ScrollView,
 } from 'react-native';
 import styles from './Style';
 import { coin, box } from '../../../img/imgIndext';
@@ -19,7 +21,9 @@ class Reward extends Component {
     super()
     this.state = {
       RewardSource: [],
+      RewardSortData: [],
       MemberSource: [],
+      sortDataBy: 'latest',
       loading: false,
       refreshing: false,
       error: null,
@@ -59,12 +63,15 @@ class Reward extends Component {
       .catch(error => {
         this.setState({ error, loading: false, refreshing: false })
       });
+
+
   }
 
   render() {
-    MyPoint = this.state.MemberSource.Member_ID
+    MyPoint = this.state.MemberSource.Member_ID;
     return (
-      <View style={styles.AllPage}>
+      <ScrollView style={{backgroundColor: 'white'}} >
+
         <FlatList
           data={this.state.MemberSource}
           renderItem={this.renderMemberItem}
@@ -73,6 +80,7 @@ class Reward extends Component {
           onRefresh={this.handleRefresh}
           ListFooterComponent={this.renderFooter}
         />
+
         <FlatList
           data={this.state.RewardSource}
           renderItem={this.renderItem}
@@ -82,7 +90,8 @@ class Reward extends Component {
           onRefresh={this.handleRefresh}
           ListFooterComponent={this.renderFooter}
         />
-      </View>
+
+      </ScrollView>
     );
   }
 

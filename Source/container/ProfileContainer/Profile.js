@@ -9,10 +9,9 @@ import {
     TouchableOpacity,
 } from 'react-native';
 import styles from './Style';
-import { coin, point } from '../../../img/imgIndext'
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 import { memberAPI, HomeColor } from '../../themes/variables';
-
+import { point, coin } from '../../../img/imgIndext'
 const { height, width } = Dimensions.get('window');
 
 import BehavHistory from '../HistoryContainer/BehaviorHistory';
@@ -66,7 +65,7 @@ class Profile extends Component {
                     keyExtractor={(item, index) => item.id}
                 />
                 <TouchableOpacity
-                    onPress={() => this.props.navigation.navigate('JoinEventHistory', { id: this.state.MemberSource[0].Member_ID})}
+                    onPress={() => this.props.navigation.navigate('JoinEventHistory', { id: this.state.MemberSource[0].Member_ID })}
                 >
                     <View style={styles.btn}>
                         <Text style={styles.btnText}>Join Event History</Text>
@@ -74,7 +73,7 @@ class Profile extends Component {
                 </TouchableOpacity>
 
                 <TouchableOpacity
-                    onPress={() => this.props.navigation.navigate('BehavHistory', { id: this.state.MemberSource[0].Member_ID})}
+                    onPress={() => this.props.navigation.navigate('BehavHistory', { id: this.state.MemberSource[0].Member_ID })}
                 >
                     <View style={styles.btn}>
                         <Text style={styles.btnText}>Behavior History</Text>
@@ -82,7 +81,7 @@ class Profile extends Component {
                 </TouchableOpacity>
 
                 <TouchableOpacity
-                    onPress={() => this.props.navigation.navigate('RedeemHistory', { id: this.state.MemberSource[0].Member_ID})}
+                    onPress={() => this.props.navigation.navigate('RedeemHistory', { id: this.state.MemberSource[0].Member_ID })}
                 >
                     <View style={styles.btn}>
                         <Text style={styles.btnText}>Redeem History</Text>
@@ -150,6 +149,34 @@ class Profile extends Component {
                     </View>
 
                 </View>
+                <View style={styles.MyPointFrame}>
+                    <View style={styles.MyPointView}>
+                        <View style={styles.MyPointBorderFrame}>
+                            <Text style={styles.MyPointText2}>My Point</Text>
+                            <View style={{ flexDirection: 'row' }}>
+                                <Image
+                                    source={point}
+                                    style={styles.icon}
+                                />
+                                <Text style={styles.MyPointText}>{item.Member_Total}</Text>
+                            </View>
+                        </View>
+                    </View>
+                    <View style={styles.MyPointView}>
+                        <View style={styles.MyWalletBorderFrame}>
+                            <Text style={styles.MyWalletText2}>My Wallet</Text>
+                            <View style={{ flexDirection: 'row' }}>
+                                <Image
+                                    source={coin}
+                                    style={styles.icon1}
+                                />
+                                <Text style={styles.MyWalletText}>{item.Member_Available}</Text>
+                            </View>
+
+                        </View>
+                    </View>
+                </View>
+
             </View>
         )
     }
