@@ -32,7 +32,7 @@ export default StyleSheet.create({
     memberImg:{
         height: width/4,
         width: width/4,
-        borderRadius: 100
+        borderRadius: 10
     },
     memberContentView:{
         flexDirection: 'column',

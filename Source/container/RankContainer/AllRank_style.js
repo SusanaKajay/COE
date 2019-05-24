@@ -19,7 +19,7 @@ export default StyleSheet.create({
     HomeBtn: {
         width: width / 5,
         height: width / 5,
-        borderRadius: 100,
+        borderRadius: 10,
         marginBottom: 2,
 
     },
@@ -37,7 +37,7 @@ export default StyleSheet.create({
         height: width / 6,
         width: width / 6,
         marginRight: 10,
-        borderRadius: 100,
+        borderRadius: 10,
         marginLeft: 20,
     },
     DetailView: {
@@ -82,7 +82,7 @@ export default StyleSheet.create({
         height: width / 8,
         width: width / 8,
         marginRight: 10,
-        borderRadius: 100,
+        borderRadius: 10,
         marginLeft: 20,
     },
     name2: {
