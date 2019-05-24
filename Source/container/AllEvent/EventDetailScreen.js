@@ -95,7 +95,7 @@ export default class EventDetailScreen extends Component {
                     </View>
 
                     <View style={Detail_style.createByView}>
-                        <Text style={Detail_style.normalText}>จัดโดย {item.CreatedBy_ID}</Text>
+                        <Text style={Detail_style.normalText}>Created By {item.CreatedBy_ID}</Text>
                     </View>
 
                     <View style={Detail_style.row}>
