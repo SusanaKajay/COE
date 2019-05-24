@@ -14,3 +14,4 @@ export const top3 = require('./top3.png');
 export const top5 = require('./Top5.png');
 export const crown = require('./crown.png');
 export const reward = require('./reward.png');
+export const clock = require('./clock.png');

@@ -12,7 +12,8 @@ import {
 } from 'react-native';
 import styles from './Style'
 import { createStackNavigator, createAppContainer } from 'react-navigation';
-import {EventAPI} from '../../themes/variables';
+import { EventAPI } from '../../themes/variables';
+import { calendar, clock } from '../../../img/imgIndext'
 
 import EventDetailScreen from './EventDetailScreen';
 
@@ -46,9 +47,9 @@ class AllEventScreen extends Component {
                         parseInt(a.OpenEvent_StartTime) - parseInt(b.OpenEvent_StartTime)
                     ) && ResponseJson.sort((a, b) =>
                         parseInt(a.OpenEvent_EndTime) - parseInt(b.OpenEvent_EndTime)
-                    )&& ResponseJson.sort((a, b) =>
+                    ) && ResponseJson.sort((a, b) =>
                         a.OpenEvent_StartDate - b.OpenEvent_StartDate
-                    )&& ResponseJson.sort((a, b) =>
+                    ) && ResponseJson.sort((a, b) =>
                         a.OpenEvent_EndDate - b.OpenEvent_EndDate
                     ) && ResponseJson.filter(index =>
                         index.OpenEvent_StartDate >= today
@@ -71,7 +72,6 @@ class AllEventScreen extends Component {
                     onRefresh={this.handleRefresh}
                     ListFooterComponent={this.renderFooter}
                 />
-
             </View>
         );
     }
@@ -80,23 +80,58 @@ class AllEventScreen extends Component {
         return (
             <View style={styles.ListBox}>
                 <TouchableOpacity
-                    onPress={() => this.props.navigation.navigate('EventDetailScreen', { Event_id: item._id, Event_Name : item.OpenEvent_Name })}
+                    onPress={() => this.props.navigation.navigate('EventDetailScreen', { Event_id: item._id, Event_Name: item.OpenEvent_Name })}
                 >
                     <Image
                         source={{ uri: item.OpenEvent_Picture }}
                         style={styles.image}
                     />
-                    <View>
-                        
-                    </View>
 
+                    <View style={styles.DetailViewFrame}>
+                        <Text style={styles.name}>{item.OpenEvent_Name}</Text>
+                        <View style={styles.DetailView}>
+                            <Text style={styles.TextDetail}>Start </Text>
+                            <View style={styles.DetailView}>
+                                <Image
+                                    source={clock}
+                                    style={styles.icon}
+                                />
+                                <Text style={styles.TextDetail}>{item.OpenEvent_StartTime}</Text>
+                            </View>
+                            <View style={styles.DetailView}>
+                                <Image
+                                    source={calendar}
+                                    style={styles.icon}
+                                />
+                                <Text style={styles.TextDetail}>{item.OpenEvent_StartDate}</Text>
+                            </View>
+                        </View>
+
+                        <View style={styles.DetailView}>
+                            <Text style={styles.TextDetail}>End   </Text>
+                            <View style={styles.DetailView}>
+                                <Image
+                                    source={clock}
+                                    style={styles.icon}
+                                />
+                                <Text style={styles.TextDetail}>{item.OpenEvent_EndTime}</Text>
+                            </View>
+                            <View style={styles.DetailView}>
+                                <Image
+                                    source={calendar}
+                                    style={styles.icon}
+                                />
+                                <Text style={styles.TextDetail}>{item.OpenEvent_StartDate}</Text>
+                            </View>
+                        </View>
+                    </View>
 
                 </TouchableOpacity>
             </View>
         )
     }
 
-    
+
     handleRefresh = () => {
         this.setState = {
             page: 1,

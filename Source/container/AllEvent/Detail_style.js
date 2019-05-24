@@ -45,6 +45,7 @@ export default StyleSheet.create({
         marginRight: 10,
     },
     eventToPinView:{
+        marginTop: 10,
         flex: 1,
         flexDirection: 'column'
     },
@@ -53,12 +54,27 @@ export default StyleSheet.create({
         borderBottomColor: 'gray',
         flexDirection: 'row'
     },
+    DetailViewFrame:{
+        width: width,
+        padding: 5,
+    },
+    DetailView:{   
+        flexDirection: 'row',
+        alignItems: 'center'
+    },
     icon:{
-        marginTop:10,
-        marginRight:5,
-        marginLeft:10,
-        marginBottom: 10,
-        height: width/15,
-        width: width/15,
+        width: width/10,
+        height: width/10,
+        marginRight: 5,
+        marginLeft: 5,
+    },
+    TextDetail:{
+        fontSize:18,
+        fontWeight: 'normal'
+    },
+    name:{
+        fontSize:20,
+        fontWeight: 'bold',
+        color: '#e80083'
     }
 });

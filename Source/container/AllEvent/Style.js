@@ -16,26 +16,6 @@ export default StyleSheet.create({
         height: height/3,
         width: width,
     },
-    font_EventName:{
-        fontFamily: 'FC Active Regular',
-        fontWeight: 'bold',
-        color: 'black',
-        fontSize: 20,
-        marginLeft: 10,
-        marginRight: 10,
-    },
-    font_EventDetail:{
-        fontFamily: 'FC Active Regular',
-        fontWeight: 'normal',
-        fontSize: 18,
-        color: 'gray',
-        marginLeft: 10,
-        marginRight: 10,
-    },
-    EventDetailBox:{
-        flexDirection: 'row',
-        marginBottom: 5,
-    },
     FontHeader: {
         fontWeight: 'bold',
         color: 'white',
@@ -47,5 +27,28 @@ export default StyleSheet.create({
         width: width,
         height: height / 15,
         backgroundColor: '#e80083',
+    },
+    DetailViewFrame:{
+        width: width,
+        padding: 5,
+    },
+    DetailView:{   
+        flexDirection: 'row',
+        alignItems: 'center'
+    },
+    icon:{
+        width: width/10,
+        height: width/10,
+        marginRight: 5,
+        marginLeft: 5,
+    },
+    TextDetail:{
+        fontSize:18,
+        fontWeight: 'normal'
+    },
+    name:{
+        fontSize:20,
+        fontWeight: 'bold',
+        color: '#e80083'
     }
 });

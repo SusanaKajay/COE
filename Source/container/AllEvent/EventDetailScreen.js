@@ -15,21 +15,11 @@ import Detail_style from './Detail_style';
 import Icon from 'react-native-vector-icons/SimpleLineIcons';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 import { pin, point } from '../../../img/imgIndext'
-import {EventAPI} from '../../themes/variables';
-
+import { EventAPI } from '../../themes/variables';
+import { calendar, clock } from '../../../img/imgIndext'
 export default class EventDetailScreen extends Component {
-    /*
-    static navigationOptions = {
-        title : (props) => {this.props.getParam('Event_name', 'Event_name')},
-        headerTintColor: 'white',
-        headerLayoutPreset: 'center',
-        headerStyle: {
-            backgroundColor: '#e80083',
-        }
-    }
-    */
 
-    static navigationOptions = ({navigation}) => {
+    static navigationOptions = ({ navigation }) => {
         return {
             title: navigation.getParam('Event_Name', 'Event_Name'),
             headerTintColor: 'white',
@@ -120,14 +110,7 @@ export default class EventDetailScreen extends Component {
                     </View>
 
                     <View style={Detail_style.eventToPinView}>
-                        <View style={Detail_style.row}>
-                            <Text style={Detail_style.normalText}>Start</Text>
-                            <Text style={Detail_style.normalText}>{item.OpenEvent_StartDate}  {item.OpenEvent_StartTime} </Text>
-                        </View>
-                        <View style={Detail_style.row}>
-                            <Text style={Detail_style.normalText}>End</Text>
-                            <Text style={Detail_style.normalText}>{item.OpenEvent_EndDate}  {item.OpenEvent_EndTime} </Text>
-                        </View>
+
                         <View style={Detail_style.row}>
                             <Image
                                 source={pin}
@@ -135,6 +118,45 @@ export default class EventDetailScreen extends Component {
                             />
                             <Text style={Detail_style.normalText}>{item.OpenEvent_Location}</Text>
                         </View>
+
+                        <View style={styles.DetailViewFrame}>
+                            <View style={styles.DetailView}>
+                                <Text style={styles.TextDetail}>Start </Text>
+                                <View style={styles.DetailView}>
+                                    <Image
+                                        source={clock}
+                                        style={styles.icon}
+                                    />
+                                    <Text style={styles.TextDetail}>{item.OpenEvent_StartTime}</Text>
+                                </View>
+                                <View style={styles.DetailView}>
+                                    <Image
+                                        source={calendar}
+                                        style={styles.icon}
+                                    />
+                                    <Text style={styles.TextDetail}>{item.OpenEvent_StartDate}</Text>
+                                </View>
+                            </View>
+
+                            <View style={styles.DetailView}>
+                                <Text style={styles.TextDetail}>End   </Text>
+                                <View style={styles.DetailView}>
+                                    <Image
+                                        source={clock}
+                                        style={styles.icon}
+                                    />
+                                    <Text style={styles.TextDetail}>{item.OpenEvent_EndTime}</Text>
+                                </View>
+                                <View style={styles.DetailView}>
+                                    <Image
+                                        source={calendar}
+                                        style={styles.icon}
+                                    />
+                                    <Text style={styles.TextDetail}>{item.OpenEvent_StartDate}</Text>
+                                </View>
+                            </View>
+                        </View>
+
                     </View>
 
                 </View >
