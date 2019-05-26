@@ -71,7 +71,7 @@ export default class EventDetailScreen extends Component {
                 <FlatList
                     data={this.state.OpenEventSource}
                     renderItem={this.renderItem}
-                    keyExtractor={(item, index) => item.id}
+                    keyExtractor={(item, index) => item.OpenEvent_Name}
                     refreshing={this.state.refreshing}
                     onRefresh={this.handleRefresh}
                     ListFooterComponent={this.renderFooter}

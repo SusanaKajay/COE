@@ -19,6 +19,16 @@ import styles from './style';
 
 export default class SignIn extends Component {
 
+    constructor(){
+        super()
+        this.state ={
+            id: '',
+            password = '',
+            error ='',
+        }
+    }
+
+
     render() {
         return (
             <View style={styles.allPage}>
@@ -35,20 +45,28 @@ export default class SignIn extends Component {
                         placeholder='Student ID'
                         keyboardType = 'number-pad'
                         maxLength = {8}
+                        onChangeText = { (text) => this.setState({id: text}) }
                     />
                     <TextInput
                         style={styles.inputBox}
                         placeholder='Password'
                         secureTextEntry={true}
+                        onChangeText = { (text) => this.setState({password: text}) }
                     />
 
-                    <TouchableOpacity>
+                    <TouchableOpacity
+                        onPress = {this.onLoginPressed.bind(this)}
+                    >
                         <View style={styles.btnView}>
                             <View style={styles.btn}>
                                 <Text style={styles.fontBtn}>Sign In</Text>
                             </View>
                         </View>
                     </TouchableOpacity>
+
+                    <Text>
+                        {this.state.error}
+                    </Text>
 
                 </View>
             </View>

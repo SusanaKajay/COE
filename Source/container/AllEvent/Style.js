@@ -34,11 +34,12 @@ export default StyleSheet.create({
     },
     DetailView:{   
         flexDirection: 'row',
-        alignItems: 'center'
+        alignItems: 'center',
+        marginBottom: 2,
     },
     icon:{
-        width: width/10,
-        height: width/10,
+        width: width/15,
+        height: width/15,
         marginRight: 5,
         marginLeft: 5,
     },

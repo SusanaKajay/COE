@@ -34,7 +34,7 @@ class AllEventScreen extends Component {
     componentDidMount() {
         this.RemoteRequest();
     }
-    //ResponseJson.filter(index=> index.OpenEvent_StartDate >= today)
+
     RemoteRequest = () => {
         let today = new Date().toISOString().slice(0, 10);
         fetch(EventAPI.url)
@@ -67,7 +67,7 @@ class AllEventScreen extends Component {
                 <FlatList
                     data={this.state.OpenEventSource}
                     renderItem={this.renderItem}
-                    keyExtractor={(item, index) => item.id}
+                    keyExtractor={(item, index) => item.OpenEvent_Name}
                     refreshing={this.state.refreshing}
                     onRefresh={this.handleRefresh}
                     ListFooterComponent={this.renderFooter}

@@ -21,6 +21,7 @@ class Reward extends Component {
     super()
     this.state = {
       RewardSource: [],
+      RewardSelect: '',
       MemberSource: [],
       sortDataBy: 'latest',
       loading: false,
@@ -69,7 +70,7 @@ class Reward extends Component {
   render() {
     MyPoint = this.state.MemberSource.Member_ID;
     return (
-      <ScrollView style={{backgroundColor: 'white'}} >
+      <ScrollView style={{ backgroundColor: 'white' }} >
 
         <FlatList
           data={this.state.MemberSource}
@@ -79,6 +80,35 @@ class Reward extends Component {
           onRefresh={this.handleRefresh}
           ListFooterComponent={this.renderFooter}
         />
+
+        <Picker
+          selectedValue={this.state.language}
+          style={{ height: 50, width: 100 }}
+          onValueChange={(itemValue, itemIndex) => {
+            if (itemValue == "latest") {
+              this.setState({
+                RewardSelect: itemValue
+              })
+            } else if (itemValue == "js") {
+              this.setState({
+                RewardSelect: itemValue
+              })
+            }
+          }
+          }>
+          <Picker.Item label="latest" value="latest" />
+          <Picker.Item label="JavaScript" value="js" />
+        </Picker>
+
+        {
+          this.state.RewardSelect ?
+            this.state.RewardSource ?
+              <Text>{this.state.RewardSelect}</Text>
+              : null
+            : null
+        }
+
+
         <FlatList
           data={this.state.RewardSource}
           renderItem={this.renderItem}
